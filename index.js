@@ -59,5 +59,28 @@ inquirer
         name: "questions"
     },
 ])
-.then()
-.catch();
+.then(function(data) {
+
+    var fileName = data.name.toLowerCase().split(' ').join('') + ".md";
+  
+    inquirer.writeToFile(fileName, JSON.stringify(data, null, '\t'), function(err) {
+  
+      if (err) {
+        return console.log(err);
+      }
+  
+      console.log("Success!");
+  
+    });
+  })
+.catch(err => {
+    if (err) { }
+});
+
+
+
+// function init() {
+
+// }
+
+// init();
